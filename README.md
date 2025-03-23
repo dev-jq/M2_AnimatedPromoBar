@@ -1,6 +1,9 @@
 # Promotional bar with text animation for Magento 2 as widget
 
+Animated:
 ![Pormobar widget](https://github.com/dev-jq/M2_AnimatedPromoBar/blob/main/README-assets/animation-promo-message.gif)
+or static:
+![Pormobar widget](https://github.com/dev-jq/M2_AnimatedPromoBar/blob/main/README-assets/promobar.PNG)
 
 ## Installation
 * Download zip file of this extension
