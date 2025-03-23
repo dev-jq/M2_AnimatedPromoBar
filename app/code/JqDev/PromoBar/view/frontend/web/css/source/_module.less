@@ -1,0 +1,29 @@
+//media all (styles-m.css)
+& when (@media-common = true) {
+    .promobar-wrapper {
+        padding: 5px 0 3px;
+        text-align: center;
+        margin: 0 auto;
+        &.text-white {
+            color: #fff;
+        }
+        &.text-black {
+            color: #000;
+        }
+        .promobar-content {
+            a {
+                color: inherit;
+            }
+        }
+        .marquee-container {
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+    }
+}
+
+// minimum 768px
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+
+}

@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Widget/etc/widget.xsd">
+    <widget id="jqdev_promobar" class="JqDev\PromoBar\Block\PromoBar">
+        <label translate="true">Promotional Bar</label>
+        <description>Customizable promotional bar with text and animation options</description>
+        <parameters>
+            <parameter name="enabled_promobar" xsi:type="select" required="true">
+                <label translate="true">Enabled</label>
+                <description>Show on frontend.</description>
+                <options>
+                    <option name="yes" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="no" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="content" xsi:type="text" required="true">
+                <label translate="true">Promotional Message</label>
+                <description>HTML content of the promotional bar.</description>
+            </parameter>
+            <parameter name="background_color" xsi:type="block" required="true">
+                <label translate="true">Background Color</label>
+                <block class="JqDev\PromoBar\Block\Widget\Color"/>
+            </parameter>
+            <parameter name="text_color" xsi:type="select" required="true">
+                <label translate="true">Text Color</label>
+                <description>Select text color.</description>
+                <options>
+                    <option name="black" value="black">
+                        <label translate="true">Black</label>
+                    </option>
+                    <option name="white" value="white">
+                        <label translate="true">White</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="font_size" xsi:type="select" required="true">
+                <label translate="true">Font Size (px)</label>
+                <description>Select the font size in pixels.</description>
+                <options>
+                    <option name="size_12" value="12">
+                        <label translate="true">12px</label>
+                    </option>
+                    <option name="size_14" value="14">
+                        <label translate="true">14px</label>
+                    </option>
+                    <option name="size_16" value="16">
+                        <label translate="true">16px</label>
+                    </option>
+                    <option name="size_18" value="18">
+                        <label translate="true">18px</label>
+                    </option>
+                    <option name="size_20" value="20">
+                        <label translate="true">20px</label>
+                    </option>
+                    <option name="size_22" value="22">
+                        <label translate="true">22px</label>
+                    </option>
+                    <option name="size_24" value="24">
+                        <label translate="true">24px</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="font_padding" xsi:type="select" required="true">
+                <label translate="true">Text padding (px)</label>
+                <description>Top and bottom padding for the text.</description>
+                <options>
+                    <option name="padding_2" value="2">
+                        <label translate="true">2px</label>
+                    </option>
+                    <option name="padding_4" value="4">
+                        <label translate="true">4px</label>
+                    </option>
+                    <option name="padding_8" value="8">
+                        <label translate="true">8px</label>
+                    </option>
+                    <option name="padding_12" value="12">
+                        <label translate="true">12px</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="scroll_animation" xsi:type="select" required="false">
+                <label translate="true">Enable Scroll Animation</label>
+                <description>Enable looping scroll animation for the text.</description>
+                <options>
+                    <option name="yes" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="no" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="duplicate_message" xsi:type="select" required="false">
+                <label translate="true">Duplicate promo message</label>
+                <description>The text will fill the entire width of the container.</description>
+                <depends>
+                    <parameter name="scroll_animation" value="1"/>
+                </depends>
+                <options>
+                    <option name="duplicate" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                    <option name="no_duplicate" value="0">
+                        <label translate="true">No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="message_interspace" xsi:type="select" required="false">
+                <label translate="true">Message interspace (px)</label>
+                <description>Spacing between duplicate messages.</description>
+                <depends>
+                    <parameter name="duplicate_message" value="1"/>
+                </depends>
+                <options>
+                    <option name="interspace_256" value="256">
+                        <label translate="true">256px</label>
+                    </option>
+                    <option name="interspace_128" value="128">
+                        <label translate="true">128px</label>
+                    </option>
+                    <option name="interspace_64" value="64">
+                        <label translate="true">64px</label>
+                    </option>
+                    <option name="interspace_32" value="32">
+                        <label translate="true">32px</label>
+                    </option>
+                    <option name="interspace_16" value="16">
+                        <label translate="true">16px</label>
+                    </option>
+                    <option name="interspace_8" value="8">
+                        <label translate="true">8px</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="scroll_speed" xsi:type="select" required="false">
+                <label translate="true">Animation speed</label>
+                <depends>
+                    <parameter name="scroll_animation" value="1"/>
+                </depends>
+                <options>
+                    <option name="speed_50" value="50">
+                        <label translate="true">Slow</label>
+                    </option>
+                    <option name="speed_100" value="100">
+                        <label translate="true">Normal</label>
+                    </option>
+                    <option name="speed_150" value="150">
+                        <label translate="true">Fast</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

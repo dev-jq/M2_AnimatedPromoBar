@@ -1,0 +1,66 @@
+<?php
+/**
+ * @var \JqDev\PromoBar\Block\PromoBar $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+
+$enabled = (bool) $block->getData('enabled_promobar');
+$backgroundColor = $escaper->escapeHtml($block->getData('background_color'));
+$content = $block->getData('content');
+$textColor = $escaper->escapeHtml($block->getData('text_color'));
+$fontSize = (int) $block->getData('font_size');
+$fontPadding = (int) $block->getData('font_padding');
+$scrollAnimation = (bool) $block->getData('scroll_animation');
+$duplicateMessage = (bool) $block->getData('duplicate_message');
+$messageInterspace = (int) $block->getData('message_interspace');
+$scrollSpeed = (int) $block->getData('scroll_speed');
+?>
+
+<?php if($enabled): ?>
+    <div class="promobar-wrapper text-<?= $escaper->escapeHtmlAttr($textColor) ?>" style="background-color: <?= $escaper->escapeHtmlAttr($backgroundColor) ?>;">
+        <?php if($scrollAnimation): ?>
+            <div class="promobar-content marquee-container">
+                <div id="promobar-marquee" style="max-height: <?= $escaper->escapeHtmlAttr($fontSize ) ?>px;">
+                    <div><?= /* @noEscape */ $content ?></div>
+                </div>
+            </div>
+        <?php else: ?>
+            <div class="promobar-content">
+                <?= /* @noEscape */ $content ?>
+            </div>
+        <?php endif; ?>
+        <style>
+            .promobar-wrapper {
+                padding: <?= $escaper->escapeHtmlAttr($fontPadding) ?>px 0;
+            }
+            .promobar-wrapper .promobar-content {
+                font-size: <?= $escaper->escapeHtmlAttr($fontSize) ?>px;
+                line-height: <?= $escaper->escapeHtmlAttr($fontSize + 4) ?>px;
+                min-height: <?= $escaper->escapeHtmlAttr($fontSize) ?>px;
+            }
+            #promobar-marquee > div:not(.js-marquee-wrapper) {
+                visibility: hidden;
+            }
+        </style>
+    </div>
+    <?php if($scrollAnimation): ?>
+        <script>
+            require(['jquery', 'JqDev_PromoBar/js/jquery.marquee.min'], function ($) {
+                $(document).ready(function () {
+                    $('#promobar-marquee').marquee({
+                        <?php if($duplicateMessage): ?>
+                        duplicated: true,
+                        duplicateCount: 10,
+                        startVisible: true,
+                        gap: <?= $escaper->escapeHtmlAttr($messageInterspace) ?>,
+                        <?php endif; ?>
+                        speed: <?= $escaper->escapeHtmlAttr($scrollSpeed) ?>,
+                        direction: 'left',
+                        delayBeforeStart: 0,
+                        pauseOnHover: true,
+                    });
+                });
+            });
+        </script>
+    <?php endif; ?>
+<?php endif; ?>
